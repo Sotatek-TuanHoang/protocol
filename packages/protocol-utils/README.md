@@ -8,12 +8,14 @@
 -   Signatures
 -   EIP712 hashing
 
+* Note: You can pass name to sign order => show name and image by name.
+
 ### Read the [Documentation](https://0x.org/docs/protocol/protocol-utils).
 
 ## Installation
 
 ```bash
-yarn add @0x/protocol-utils
+yarn add @karuizawa_kei/protocol-utils
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
