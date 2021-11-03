@@ -50,8 +50,8 @@ export function createExchangeProxyEIP712Domain(chainId?: number, verifyingContr
 /**
  * Get the hash of the exchange proxy EIP712 domain.
  */
-export function getExchangeProxyEIP712DomainHash(chainId?: number, verifyingContract?: string): string {
-    const domain = createExchangeProxyEIP712Domain(chainId, verifyingContract);
+export function getExchangeProxyEIP712DomainHash(chainId?: number, verifyingContract?: string, name?: string): string {
+    const domain = createExchangeProxyEIP712Domain(chainId, verifyingContract, name);
     return hexUtils.hash(
         hexUtils.concat(
             EXCHANGE_PROXY_DOMAIN_TYPEHASH,
@@ -66,9 +66,9 @@ export function getExchangeProxyEIP712DomainHash(chainId?: number, verifyingCont
 /**
  * Compute a complete EIP712 hash given a struct hash.
  */
-export function getExchangeProxyEIP712Hash(structHash: string, chainId?: number, verifyingContract?: string): string {
+export function getExchangeProxyEIP712Hash(structHash: string, chainId?: number, verifyingContract?: string, name?: string): string {
     return hexUtils.hash(
-        hexUtils.concat('0x1901', getExchangeProxyEIP712DomainHash(chainId, verifyingContract), structHash),
+        hexUtils.concat('0x1901', getExchangeProxyEIP712DomainHash(chainId, verifyingContract, name), structHash),
     );
 }
 
