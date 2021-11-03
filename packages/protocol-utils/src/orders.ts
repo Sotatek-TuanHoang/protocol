@@ -107,7 +107,7 @@ export abstract class OrderBase {
     }
 
     public abstract getStructHash(): string;
-    public abstract getEIP712TypedData(): EIP712TypedData;
+    public abstract getEIP712TypedData(name?: string): EIP712TypedData;
     public abstract willExpire(secondsFromNow: number): boolean;
 
     public getHash(): string {
@@ -118,10 +118,11 @@ export abstract class OrderBase {
         provider: SupportedProvider,
         type: SignatureType = SignatureType.EthSign,
         signer: string = this.maker,
+        name?: string
     ): Promise<Signature> {
         switch (type) {
             case SignatureType.EIP712:
-                return eip712SignTypedDataWithProviderAsync(this.getEIP712TypedData(), signer, provider);
+                return eip712SignTypedDataWithProviderAsync(this.getEIP712TypedData(name), signer, provider);
             case SignatureType.EthSign:
                 return ethSignHashWithProviderAsync(this.getHash(), signer, provider);
             default:
@@ -217,13 +218,13 @@ export class LimitOrder extends OrderBase {
         );
     }
 
-    public getEIP712TypedData(): EIP712TypedData {
+    public getEIP712TypedData(name?: string): EIP712TypedData {
         return {
             types: {
                 EIP712Domain: EIP712_DOMAIN_PARAMETERS,
                 [LimitOrder.STRUCT_NAME]: LimitOrder.STRUCT_ABI,
             },
-            domain: createExchangeProxyEIP712Domain(this.chainId, this.verifyingContract) as any,
+            domain: createExchangeProxyEIP712Domain(this.chainId, this.verifyingContract, name) as any,
             primaryType: LimitOrder.STRUCT_NAME,
             message: {
                 makerToken: this.makerToken,

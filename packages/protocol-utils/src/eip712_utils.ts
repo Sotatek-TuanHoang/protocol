@@ -19,7 +19,7 @@ export const EIP712_DOMAIN_PARAMETERS = [
 const EXCHANGE_PROXY_EIP712_DOMAIN_DEFAULT = {
     chainId: 1,
     verifyingContract: NULL_ADDRESS,
-    name: 'ZeroEx',
+    name: 'EvryFinance',
     version: '1.0.0',
 };
 
@@ -38,11 +38,12 @@ const EXCHANGE_PROXY_DOMAIN_TYPEHASH = hexUtils.hash(
 /**
  * Create an exchange proxy EIP712 domain.
  */
-export function createExchangeProxyEIP712Domain(chainId?: number, verifyingContract?: string): EIP712Domain {
+export function createExchangeProxyEIP712Domain(chainId?: number, verifyingContract?: string, name?: string): EIP712Domain {
     return {
         ...EXCHANGE_PROXY_EIP712_DOMAIN_DEFAULT,
         ...(chainId ? { chainId } : {}),
         ...(verifyingContract ? { verifyingContract } : {}),
+        ...(name ? { name } : {}),
     };
 }
 
