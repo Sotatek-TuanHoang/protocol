@@ -1,10 +1,10 @@
 {
-    "name": "@0x/protocol-utils",
-    "version": "1.9.4",
+    "name": "@karuizawa_kei/protocol-utils",
+    "version": "1.0.0",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "0x protocol utils",
+    "description": "fork from 0x protocol utils",
     "main": "lib/src/index.js",
     "types": "lib/src/index.d.ts",
     "scripts": {
@@ -34,12 +34,12 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/protocol.git"
+        "url": "https://github.com/Sotatek-TuanHoang/protocol.git"
     },
     "bugs": {
         "url": "https://github.com/0xProject/protocol/issues"
     },
-    "homepage": "https://github.com/0xProject/protocol/tree/main/packages/protocol-utils",
+    "homepage": "https://github.com/Sotatek-TuanHoang/protocol/tree/development/packages/protocol-utils",
     "devDependencies": {
         "@0x/dev-utils": "^4.2.9",
         "@0x/ts-doc-gen": "^0.0.28",
