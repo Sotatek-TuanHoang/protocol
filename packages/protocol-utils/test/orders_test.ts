@@ -36,6 +36,8 @@ describe('orders', () => {
             salt: new BigNumber(2001),
             chainId: 8008,
             verifyingContract: '0x6701704d2421c64ee9aa93ec7f96ede81c4be77d',
+            matchingFee: new BigNumber('3000'),
+            cancelFee: new BigNumber('3000'),
         });
 
         it('can get the struct hash', () => {

@@ -203,6 +203,8 @@ export class LimitOrder extends OrderBase {
             salt: this.salt,
             chainId: this.chainId,
             verifyingContract: this.verifyingContract,
+            matchingFee: this.matchingFee,
+            cancelFee: this.cancelFee,
             ...fields,
         });
     }
@@ -223,6 +225,8 @@ export class LimitOrder extends OrderBase {
                 hexUtils.leftPad(this.pool),
                 hexUtils.leftPad(this.expiry),
                 hexUtils.leftPad(this.salt),
+                hexUtils.leftPad(this.matchingFee),
+                hexUtils.leftPad(this.cancelFee),
             ),
         );
     }
@@ -248,6 +252,8 @@ export class LimitOrder extends OrderBase {
                 pool: this.pool,
                 expiry: this.expiry.toString(10),
                 salt: this.salt.toString(10),
+                matchingFee: this.matchingFee.toString(10),
+                cancelFee: this.cancelFee.toString(10)
             },
         };
     }
