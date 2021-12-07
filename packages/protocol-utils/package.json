@@ -1,6 +1,6 @@
 {
     "name": "@karuizawa_kei/protocol-utils",
-    "version": "1.0.1",
+    "version": "1.1.1",
     "engines": {
         "node": ">=6.12"
     },
@@ -37,7 +37,7 @@
         "url": "https://github.com/Sotatek-TuanHoang/protocol.git"
     },
     "bugs": {
-        "url": "https://github.com/0xProject/protocol/issues"
+        "url": "https://github.com/Sotatek-TuanHoang/protocol.git"
     },
     "homepage": "https://github.com/Sotatek-TuanHoang/protocol/tree/development/packages/protocol-utils",
     "devDependencies": {

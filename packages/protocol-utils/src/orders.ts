@@ -2,6 +2,7 @@ import { getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
 import { SupportedProvider } from '@0x/subproviders';
 import { EIP712TypedData } from '@0x/types';
 import { BigNumber, hexUtils, NULL_ADDRESS } from '@0x/utils';
+import { Zero } from 'ethers/constants';
 
 import { ZERO } from './constants';
 import {
@@ -37,6 +38,8 @@ const LIMIT_ORDER_DEFAULT_VALUES = {
     expiry: ZERO,
     pool: hexUtils.leftPad(0),
     salt: ZERO,
+    matchingFee: ZERO,
+    cancelFee: ZERO
 };
 const RFQ_ORDER_DEFAULT_VALUES = {
     ...COMMON_ORDER_DEFAULT_VALUES,
@@ -157,6 +160,8 @@ export class LimitOrder extends OrderBase {
         { type: 'bytes32', name: 'pool' },
         { type: 'uint64', name: 'expiry' },
         { type: 'uint256', name: 'salt' },
+        { type: 'uint128', name: 'matchingFee' },
+        { type: 'uint128', name: 'cancelFee' },
     ];
     public static readonly TYPE_HASH = getTypeHash(LimitOrder.STRUCT_NAME, LimitOrder.STRUCT_ABI);
 
@@ -166,6 +171,8 @@ export class LimitOrder extends OrderBase {
     public pool: string;
     public salt: BigNumber;
     public expiry: BigNumber;
+    public matchingFee: BigNumber;
+    public cancelFee: BigNumber;
 
     constructor(fields: Partial<LimitOrderFields> = {}) {
         const _fields = { ...LIMIT_ORDER_DEFAULT_VALUES, ...fields };
@@ -176,6 +183,8 @@ export class LimitOrder extends OrderBase {
         this.pool = _fields.pool;
         this.salt = _fields.salt;
         this.expiry = _fields.expiry;
+        this.matchingFee = _fields.matchingFee;
+        this.cancelFee = _fields.cancelFee;
     }
 
     public clone(fields: Partial<LimitOrderFields> = {}): LimitOrder {
